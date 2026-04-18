@@ -13,6 +13,9 @@ function initApp() {
     initCounter();      // Updates the "Total Events" count
     setupLogin();       // Handles the staff login form
     initGalleryModal(); // Runs the Lightbox gallery
+    initMasterFilter();       // Enables search/filter functionality
+    setupContactForm();     // Validates the contact form
+    showError();
 
     console.log("✅ System Active: Optimized & Running");
 }
@@ -243,4 +246,102 @@ function initGalleryModal() {
         if (e.key === "ArrowRight") nextBtn?.click();
         if (e.key === "ArrowLeft") prevBtn?.click();
     });
+}
+
+
+/* --- 9. MASTER SEARCH, FILTER & SORT --- */
+
+function initMasterFilter() {
+    const searchInput = document.getElementById("search");
+    const categorySelect = document.getElementById("category");
+    const sortSelect = document.getElementById("sort");
+    const container = document.querySelector(".events-grid");
+
+    if (!container) return;
+
+    const runAllFilters = () => {
+        // Grab current values (or defaults if empty)
+        const query = searchInput ? searchInput.value.toLowerCase() : "";
+        const selectedCat = categorySelect ? categorySelect.value : "";
+        const selectedSort = sortSelect ? sortSelect.value : "date";
+
+        let cards = Array.from(container.querySelectorAll(".event-card"));
+
+        cards.forEach(card => {
+            const content = card.innerText.toLowerCase();
+            const cardCat = card.dataset.category || "";
+
+            // Check Search (If query is empty, this is always true)
+            const matchesSearch = content.includes(query);
+
+            // Check Category (If "All" is selected, this is always true)
+            const matchesCat = selectedCat === "" || cardCat === selectedCat;
+
+            // Apply visibility: Card must pass BOTH checks
+            if (matchesSearch && matchesCat) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        // SORTING: This runs independently of visibility
+        cards.sort((a, b) => {
+            if (selectedSort === "date") {
+                return new Date(a.dataset.date) - new Date(b.dataset.date);
+            } else if (selectedSort === "popularity") {
+                return parseInt(b.dataset.popularity || 0) - parseInt(a.dataset.popularity || 0);
+            }
+        });
+
+        // Move the cards in the DOM to reflect the new sort order
+        cards.forEach(card => container.appendChild(card));
+    };
+
+    // Add listeners to all three tabs
+    searchInput?.addEventListener("input", runAllFilters);
+    categorySelect?.addEventListener("change", runAllFilters);
+    sortSelect?.addEventListener("change", runAllFilters);
+}
+
+
+/* --- CONTACT FORM VALIDATION --- */
+
+function setupContactForm() {
+    const form = document.getElementById("contactForm");
+    if (!form) return;
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById("userName");
+        const nameValue = nameInput.value.trim();
+
+        // REGEX: Allows letters (a-z) and spaces only. 
+        // ^ means start, $ means end. [a-zA-Z\s] means letters and spaces.
+        const namePattern = /^[a-zA-Z\s]+$/;
+
+        // 1. Check if empty
+        if (nameValue === "") {
+            showError(nameInput, "Name is required.");
+            return;
+        }
+
+        // 2. Check for numbers (The specific fix you asked for)
+        if (!namePattern.test(nameValue)) {
+            showError(nameInput, "Names cannot contain numbers or special characters.");
+            return;
+        }
+
+        // If validation passes
+        localStorage.setItem("visitorName", nameValue);
+        window.location.href = "thank-you.html";
+    });
+}
+
+// Helper function to show errors professionally
+function showError(inputElement, message) {
+    inputElement.classList.add("is-invalid"); // Bootstrap error class
+    alert(message); // Simple alert, or you can update a <div> on screen
+    inputElement.focus();
 }
