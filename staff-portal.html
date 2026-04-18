@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Portal Login - Campus Spotlight</title>
+    <link rel="stylesheet" href="css/staff-login.css">
+</head>
+
+<body class="login-body">
+    <header class="site-header">
+        <img src="images/logo2.jpg" alt="Campus Spotlight Logo" class="site-logo">
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-page-wrapper">
+        <section class="login-card">
+            <header class="login-card-header">
+                <h1>Staff Portal</h1>
+                <p>Login to manage campus events</p>
+            </header>
+
+            <form class="login-form" method="post" action="/login">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required autocomplete="email"
+                        placeholder="e.g. admin@campus.edu">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password"
+                        placeholder="••••••••">
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="remember">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="/forgot-password" class="forgot-link">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Sign In</button>
+            </form>
+
+            <hr class="login-divider">
+
+            <p class="request-text">Need access? <a href="/request-access">Request Access</a></p>
+
+            <aside class="auth-note">
+                <p><strong>Note:</strong> Only authorized staff members can access the portal.</p>
+            </aside>
+
+            <nav class="back-nav">
+                <a href="index.html">← Back to Home</a>
+            </nav>
+        </section>
+    </main>
+
+    <footer class="login-footer">
+        <p><small>&copy; 2026 Campus Spotlight. All rights reserved.</small></p>
+    </footer>
+    <script src="JS/main.js"></script>
+</body>
+
+</html>

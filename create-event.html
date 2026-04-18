@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event | Staff Portal</title>
+    <link rel="stylesheet" href="css/create-event.css">
+</head>
+
+<body class="admin-body">
+
+    <header class="main-header">
+        <div class="header-brand">
+            <img src="logo.png" alt="Campus Spotlight">
+            <p>Staff Portal</p>
+        </div>
+        <div class="header-nav">
+            <button class="btn-outline" onclick="window.location.href='index.html'">View Site</button>
+            <button class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <main class="content-area">
+        <header class="page-header">
+            <h1>Create New Event</h1>
+        </header>
+
+        <div class="create-grid">
+
+            <!-- ================= FORM ================= -->
+            <form id="eventForm" class="event-form">
+
+                <!-- EVENT DETAILS -->
+                <fieldset>
+                    <legend>Event Details</legend>
+
+                    <div class="form-group">
+                        <label>Event Title *</label>
+                        <input type="text" id="title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description *</label>
+                        <textarea id="description" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="category" required>
+                            <option value="">Select</option>
+                            <option value="academic">Academic</option>
+                            <option value="cultural">Cultural</option>
+                            <option value="sports">Sports</option>
+                            <option value="social">Social</option>
+                            <option value="community">Community</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Venue *</label>
+                        <input type="text" id="venue" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Image</label>
+                        <input type="file" id="image" accept="image/*">
+                    </div>
+                </fieldset>
+
+                <!-- DATE & TIME -->
+                <fieldset>
+                    <legend>Date & Time</legend>
+
+                    <div class="form-row">
+                        <input type="date" id="startDate" required>
+                        <input type="time" id="startTime" required>
+                    </div>
+
+                    <div class="form-row">
+                        <input type="date" id="endDate" required>
+                        <input type="time" id="endTime" required>
+                    </div>
+                </fieldset>
+
+                <!-- ENTRY TYPE -->
+                <fieldset>
+                    <legend>Pricing & Access Rules</legend>
+
+                    <!-- WHO PAYS -->
+                    <label>Who can attend?</label>
+
+                    <label>
+                        <input type="checkbox" name="audience" value="student" checked>
+                        Students
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="audience" value="staff" checked>
+                        Staff
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="audience" value="guest">
+                        Guests (External)
+                    </label>
+
+                    <hr style="margin: 1rem 0;">
+
+                    <!-- PAYMENT MODEL -->
+                    <label>Payment Model *</label>
+                    <select id="paymentModel" required>
+                        <option value="">Select</option>
+                        <option value="free">Free Event</option>
+                        <option value="guest_ticket">Guest Ticket Only</option>
+                        <option value="mixed">Mixed Pricing</option>
+                    </select>
+
+                    <!-- PRICES -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Student Fee (JMD)</label>
+                            <input type="number" id="studentFee" min="0" placeholder="0.00">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Staff Fee (JMD)</label>
+                            <input type="number" id="staffFee" min="0" placeholder="0.00">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Guest Ticket Price (JMD)</label>
+                        <input type="number" id="guestFee" min="0" placeholder="0.00">
+                    </div>
+
+                </fieldset>
+
+                <!-- CAPACITY -->
+                <fieldset>
+                    <legend>Capacity</legend>
+
+                    <input type="number" id="capacity" placeholder="Max Capacity" min="1" required>
+                </fieldset>
+
+                <!-- REGISTRATION -->
+                <fieldset>
+                    <legend>Registration Rules</legend>
+
+                    <input type="datetime-local" id="deadline" required>
+
+                    <label>
+                        <input type="checkbox" id="approval">
+                        Require approval for registrations
+                    </label>
+                </fieldset>
+
+                <!-- ACTIONS -->
+                <div class="form-actions">
+                    <button type="button" id="saveDraft" class="btn-draft">Save Draft</button>
+                    <button type="submit" class="btn-publish">Publish Event</button>
+                </div>
+
+            </form>
+
+            <!-- ================= PREVIEW ================= -->
+            <aside class="preview-panel">
+                <h2>Live Preview</h2>
+
+                <div class="preview-card">
+                    <img id="previewImg" style="width:100%; display:none;" />
+
+                    <h3 id="previewTitle">Event Title</h3>
+                    <p id="previewMeta">Category • Venue</p>
+                    <p id="previewDesc">Description preview...</p>
+                    <p id="previewType"></p>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <script src="js/create-event.js"></script>
+</body>
+
+</html>

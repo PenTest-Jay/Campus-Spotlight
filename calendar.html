@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar - Campus Spotlight</title>
+    <link rel="stylesheet" href="css/calendar.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <!-- Logo -->
+        <img src="images/logo2.jpg" alt="Campus Spotlight Logo" class="site-logo">
+
+        <!-- Main navigation menu -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="calendar.html" aria-current="page">Calendar</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="split">|</li>
+                <li><a href="staff-portal.html">Staff Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="calendar-page-wrapper">
+        <header class="calendar-hero">
+            <h1>Event Calendar</h1>
+            <p>View all campus events in calendar format and plan your schedule</p>
+        </header>
+
+        <div class="calendar-layout-grid reveal">
+            <div class="calendar-main-content">
+                <div class="calendar-header">
+                    <h2>March 2026</h2>
+                    <nav class="calendar-controls">
+                        <button class="btn-ctrl" id="prevMonth" aria-label="Previous Month">← Prev</button>
+                        <button class="btn-ctrl" id="nextMonth" aria-label="Next Month">Next →</button>
+                    </nav>
+                </div>
+
+                <table class="event-table">
+                    <caption>March 2026 Events Calendar</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Sun</th>
+                            <th scope="col">Mon</th>
+                            <th scope="col">Tue</th>
+                            <th scope="col">Wed</th>
+                            <th scope="col">Thu</th>
+                            <th scope="col">Fri</th>
+                            <th scope="col">Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>
+                                <time datetime="2026-03-05">5</time>
+                                <a href="/events/jerk-cookoff" class="event-link cultural">Jerk Cook-Off</a>
+                            </td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <time datetime="2026-03-08">8</time>
+                                <a href="/events/reggae-night" class="event-link cultural">Reggae Night</a>
+                            </td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>
+                                <time datetime="2026-03-12">12</time>
+                                <a href="/events/pageant" class="event-link cultural">Miss & Mr. Campus</a>
+                            </td>
+                            <td>13</td>
+                            <td aria-current="date">14</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>
+                                <time datetime="2026-03-18">18</time>
+                                <a href="/events/gospel-concert" class="event-link social">Gospel Concert</a>
+                            </td>
+                            <td>19</td>
+                            <td>
+                                <time datetime="2026-03-20">20</time>
+                                <a href="/events/track-field" class="event-link sports">Track & Field</a>
+                            </td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>23</td>
+                            <td>24</td>
+                            <td>
+                                <time datetime="2026-03-25">25</time>
+                                <a href="/events/career-fair" class="event-link career">Career Fair</a>
+                            </td>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>29</td>
+                            <td>30</td>
+                            <td>31</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <fieldset class="category-legend">
+                    <legend>Event Categories</legend>
+                    <ul>
+                        <li><span class="cat-academic"></span>Academic</li>
+                        <li><span class="cat-cultural"></span>Cultural</li>
+                        <li><span class="cat-sports"></span>Sports</li>
+                        <li><span class="cat-social"></span>Social</li>
+                        <li><span class="cat-career"></span>Career</li>
+                        <li><span class="cat-service"></span>Community Service</li>
+                    </ul>
+                </fieldset>
+            </div>
+
+            <aside class="calendar-sidebar">
+                <h2>Upcoming Events</h2>
+                <ol class="sidebar-list">
+                    <li data-link="upcoming-events.html" class="upcoming-event-item">
+                        <h3>Annual Jerk Cook-Off</h3>
+                        <time datetime="2026-03-05T12:00">March 5, 2026 - 12:00 PM</time>
+                    </li>
+                    <li data-link="upcoming-events.html " class="upcoming-event-item">
+                        <h3>Reggae Night: Oldies</h3>
+                        <time datetime="2026-03-08T20:00">March 8, 2026 - 8:00 PM</time>
+                    </li>
+                    <li data-link="upcoming-events.html" class="upcoming-event-item">
+                        <h3>Miss & Mr. Campus</h3>
+                        <time datetime="2026-03-12T19:00">March 12, 2026 - 7:00 PM</time>
+                    </li>
+                </ol>
+                <button class="view-all-btn" data-link="upcoming-events.html">View All Events</button>
+
+                <div class="sync-box">
+                    <h3>Sync Calendar</h3>
+                    <button class="btn-outline">Export iCal</button>
+                    <button class="btn-outline">Google Calendar</button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-content">
+                <!-- Footer logo -->
+                <div class="footer-brand">
+                    <img src="images/logo2.jpg" alt="Campus Spotlight" class="footer-logo">
+                </div>
+
+                <!-- Quick Links Navigation -->
+                <nav class="footer-nav">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="calendar.html">Calendar</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="staff-portal.html">Staff Portal</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-nav">
+                    <h3>Event Categories</h3>
+                    <ul>
+                        <li><a href="#">Academic Events</a></li>
+                        <li><a href="#">Sports & Athletics</a></li>
+                        <li><a href="#">Cultural Events</a></li>
+                        <li><a href="#">Social Events</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact Information -->
+                <nav class="footer-nav">
+                    <h3>Contact Info</h3>
+                    <address class="footer-contact">
+                        <p>Email✉: <a href="mailto:events@campus.edu">events@campus.edu</a></p>
+                        <p>Phone📞: <a href="tel:+18769275563">+1 (876) 927-5563</a></p>
+                        <p>📍</p>
+                    </address>
+                </nav>
+                <!-- Social Media Links -->
+                <!-- <nav class="footer-social">
+                    <h3>Social Media</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </nav> -->
+            </div>
+            <!-- Copyright Notice -->
+            <p class="footer-copyright"><small>&copy; 2026 Campus Spotlight. All rights reserved.</small></p>
+        </div>
+    </footer>
+    <script src="JS/main.js"></script>
+</body>
+
+</html>

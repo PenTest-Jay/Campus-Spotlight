@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events - Campus Spotlight</title>
+    <link rel="stylesheet" href="css/upcoming.css">
+</head>
+
+<body class="upcoming-page">
+    <header class="site-header">
+        <!-- Logo -->
+        <img src="images/logo2.jpg" alt="Campus Spotlight Logo" class="site-logo">
+
+        <!-- Main navigation menu -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html" aria-current="page">Events</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="split">|</li>
+                <li><a href="staff-portal.html">Staff Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="events-hero">
+            <div class="hero-content">
+                <h1>Upcoming Events</h1>
+                <p>Secure your spot for the biggest vibes happening soon on campus.</p>
+            </div>
+        </section>
+        <div>
+            <section class="filter-container">
+                <div class="filter-wrapper">
+                    <form role="search" class="search-box">
+                        <label for="search">Find an Event</label>
+                        <input type="search" id="search" name="search" placeholder="E.g. Reggae Night...">
+                    </form>
+
+                    <form class="filter-selects">
+                        <div class="select-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="category">
+                                <option value="">All Categories</option>
+                                <option value="academic">Academic</option>
+                                <option value="cultural">Cultural</option>
+                                <option value="sports">Sports</option>
+                                <option value="social">Social</option>
+                            </select>
+                        </div>
+
+                        <div class="select-group">
+                            <label for="sort">Sort By</label>
+                            <select id="sort" name="sort">
+                                <option value="date">Soonest First</option>
+                                <option value="popularity">Popularity</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <p class="results-count">Showing <strong id="eventNumber">0</strong> upcoming events</p>
+            </section>
+        </div>
+        <!-- Event Grid-->
+        <div>
+            <section class="events-grid" id="eventGrid">
+                <article class="event-card cultural-border" data-date="2026-08-06" data-category="cultural">
+                    <div class="card-img">
+                        <img src="images/fete.jpeg" alt="fete">
+                        <span class=" badge" data-category="social"></span>
+                    </div>
+                    <div class="card-content">
+                        <h2>Freshers Fete</h2>
+                        <div class="event-meta">
+                            <time datetime="2026-08-06">📅 Aug 6, 2026</time>
+                            <time datetime="19:00">⏰ 7:00 PM</time>
+                            <address>📍 Taylor Hall</address>
+                        </div>
+                        <p class="spots-left">🔥 250 spots available</p>
+                        <button class="btn-details" data-link="event-details.html">View Details</button>
+                    </div>
+                </article>
+
+                <article class="event-card sports-border" data-date="2026-03-20" data-category="sports">
+                    <div class="card-img">
+                        <img src="images/sport2.jpeg" alt="Track & Field">
+                        <span class="badge" data-category="sports"></span>
+                    </div>
+                    <div class="card-content">
+                        <h2>Inter-Hall Track Finals</h2>
+                        <div class="event-meta">
+                            <time datetime="2026-05-20">📅 May 20, 2026</time>
+                            <time datetime="14:00">⏰ 2:00 PM</time>
+                            <address>📍 National Stadium</address>
+                        </div>
+                        <p class="free-label">Free Event</p>
+                        <button class="btn-details" data-link="event-details.html">View Details</button>
+                    </div>
+                </article>
+
+                <article class="event-card social-border" data-date="2026-03-08" data-category="social">
+                    <div class="card-img">
+                        <img src="images/bootcamp5.jpeg" alt="bootcamp">
+                        <span class="badge" data-category="social"></span>
+                    </div>
+                    <div class="card-content">
+                        <h2>Fit Series Boot-Camp</h2>
+                        <div class="event-meta">
+                            <time datetime="2026-06-08">📅 June 8, 2026</time>
+                            <time datetime="20:00">⏰ 8:00 PM</time>
+                            <address>📍 Hall Courtyard</address>
+                        </div>
+                        <p class="spots-left">🔥 150 spots available</p>
+                        <button class="btn-details" data-link="event-details.html">View Details</button>
+                    </div>
+                </article>
+            </section>
+        </div>
+        <!--LOAD MORE-->
+        <div class="btn-more-container">
+            <button class="btn-load-more" id="loadMoreBtn">Load More Events</button>
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-content">
+                <!-- Footer logo -->
+                <div class="footer-brand">
+                    <img src="images/logo2.jpg" alt="Campus Spotlight" class="footer-logo">
+                </div>
+
+                <!-- Quick Links Navigation -->
+                <nav class="footer-nav">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="calendar.html">Calendar</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="staff-portal.html">Staff Portal</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-nav">
+                    <h3>Event Categories</h3>
+                    <ul>
+                        <li><a href="#">Academic Events</a></li>
+                        <li><a href="#">Sports & Athletics</a></li>
+                        <li><a href="#">Cultural Events</a></li>
+                        <li><a href="#">Social Events</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact Information -->
+                <nav class="footer-nav">
+                    <h3>Contact Info</h3>
+                    <address class="footer-contact">
+                        <p>Email✉: <a href="mailto:events@campus.edu">events@campus.edu</a></p>
+                        <p>Phone📞: <a href="tel:+18769275563">+1 (876) 927-5563</a></p>
+                        <p>📍</p>
+                    </address>
+                </nav>
+                <!-- Social Media Links -->
+                <!-- <nav class="footer-social">
+                    <h3>Social Media</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </nav> -->
+            </div>
+            <!-- Copyright Notice -->
+            <p class="footer-copyright"><small>&copy; 2026 Campus Spotlight. All rights reserved.</small></p>
+        </div>
+    </footer>
+    <script src="JS/main.js"></script>
+</body>
+
+</html>

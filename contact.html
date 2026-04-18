@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Campus Spotlight</title>
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <!-- Logo -->
+        <img src="images/logo2.jpg" alt="Campus Spotlight Logo" class="site-logo">
+
+        <!-- Main navigation menu -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
+                <li class="split">|</li>
+                <li><a href="staff-portal.html">Staff Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-page-wrapper">
+        <header class="contact-hero">
+            <h1>Contact Us</h1>
+            <p>Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </header>
+
+        <div class="contact-layout-grid reveal">
+            <section class="contact-form-container">
+                <h2>Send Us a Message</h2>
+                <form method="post" action="/contact" class="modern-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="event-inquiry">Event Inquiry</option>
+                            <option value="registration">Registration Issue</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="technical">Technical Support</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="updates">
+                        <span>I would like to receive updates about campus events</span>
+                    </label>
+
+                    <button type="submit" class="btn-primary-full">Send Message</button>
+                </form>
+            </section>
+
+            <aside class="contact-sidebar">
+                <div class="info-card">
+                    <h3>Contact Information</h3>
+                    <address>
+                        <p><strong>Email:</strong> <a href="mailto:events@campus.edu">events@campus.edu</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:+18769275563">+1 (876) 927-5563</a></p>
+                        <p><strong>Location:</strong><br>
+                            Student Affairs Office, Hope Road<br>
+                            Kingston 6, Jamaica</p>
+                    </address>
+                </div>
+
+                <div class="info-card">
+                    <h3>Office Hours</h3>
+                    <dl class="hours-list">
+                        <dt>Mon - Fri</dt>
+                        <dd>9:00 AM - 5:00 PM</dd>
+                        <dt>Saturday</dt>
+                        <dd>10:00 AM - 2:00 PM</dd>
+                    </dl>
+                </div>
+
+                <div class="emergency-box">
+                    <h3>Emergency Contact</h3>
+                    <p>Campus Security: <br><strong>+1 (876) 555-9119</strong></p>
+                </div>
+            </aside>
+        </div>
+
+        <section class="faq-section reveal">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <details>
+                    <summary>How do I register for an event?</summary>
+                    <p>Browse events on our Events page, click on the event, and hit "Register Now".</p>
+                </details>
+                <details>
+                    <summary>Can I cancel my registration?</summary>
+                    <p>Yes, email us at events@campus.edu at least 24 hours before the event.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Campus Spotlight</title>
+    <link rel="stylesheet" href="css/staff-dash.css">
+</head>
+
+<body class="dashboard-body">
+    <header class="admin-header">
+        <div class="header-left">
+            <img src="logo.png" alt="Campus Spotlight">
+            <p>Staff Portal</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn-secondary">View Site</button>
+            <button class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <nav aria-label="Main navigation" class="sidebar">
+        <ul>
+            <li><a href="staff-portal-dashboard.html" aria-current="page">Dashboard</a></li>
+            <li><a href="manage-events.html">Manage Events</a></li>
+            <li><a href="create-event.html">Create Event</a></li>
+            <li><a href="registrations.html">Registrations</a></li>
+            <li><a href="analytics.html">Analytics</a></li>
+        </ul>
+    </nav>
+
+    <main class="dashboard-main">
+        <header class="page-title">
+            <h1>Welcome Back, Admin</h1>
+        </header>
+
+        <section class="overview-stats">
+            <article class="stat-card">
+                <h2>Total Events</h2>
+                <data value="42">42</data>
+            </article>
+
+            <article class="stat-card">
+                <h2>Active Events</h2>
+                <data value="18">18</data>
+            </article>
+
+            <article class="stat-card">
+                <h2>Registrations</h2>
+                <data value="1234">1,234</data>
+            </article>
+
+            <article class="stat-card">
+                <h2>Upcoming</h2>
+                <data value="12">12</data>
+            </article>
+        </section>
+
+        <section class="quick-actions">
+            <button class="btn-create">+ Create a New Event</button>
+        </section>
+
+        <section class="data-section">
+            <div class="section-header">
+                <h2>Recent Events</h2>
+                <form role="search" class="search-form">
+                    <input type="search" id="search" name="search" placeholder="Search events...">
+                </form>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Capacity</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Independence Day Celebration</td>
+                            <td><time datetime="2026-08-06">Aug 6, 2026</time></td>
+                            <td><span class="badge active">Active</span></td>
+                            <td>188/250</td>
+                            <td>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-view">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Inter-Hall Track & Field</td>
+                            <td><time datetime="2026-03-20">Mar 20, 2026</time></td>
+                            <td><span class="badge active">Active</span></td>
+                            <td>456/500</td>
+                            <td>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-view">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <nav aria-label="Pagination" class="pagination">
+                <p>Showing 1-5 of 42 events</p>
+                <div class="pagination-buttons">
+                    <button disabled>Previous</button>
+                    <button>Next</button>
+                </div>
+            </nav>
+        </section>
+
+        <div class="dashboard-footer-grid">
+            <section class="category-section">
+                <h2>Events by Category</h2>
+                <dl class="category-list">
+                    <dt>Academic</dt>
+                    <dd>
+                        <meter min="0" max="50" value="12"></meter>
+                        <data value="12">12</data>
+                    </dd>
+
+                    <dt>Cultural</dt>
+                    <dd>
+                        <meter min="0" max="50" value="18"></meter>
+                        <data value="18">18</data>
+                    </dd>
+                </dl>
+            </section>
+
+            <section class="activity-section">
+                <h2>Recent Activity</h2>
+                <ol class="activity-list">
+                    <li>
+                        <p>New registration: <strong>Independence Day</strong></p>
+                        <time datetime="2026-03-14T10:30:00">2 hours ago</time>
+                    </li>
+                    <li>
+                        <p>Event Updated: <strong>Gospel Explosion</strong></p>
+                        <time datetime="2026-03-14T09:15:00">3 hours ago</time>
+                    </li>
+                </ol>
+            </section>
+        </div>
+    </main>
+    <script src="JS/main.js"></script>
+</body>
+
+</html>

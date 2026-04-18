@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Jamaica Independence Day Celebration</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <!-- Logo -->
+        <img src="images/logo2.jpg" alt="Campus Spotlight Logo" class="site-logo">
+
+        <!-- Main navigation menu -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html" aria-current="page">Events</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="split">|</li>
+                <li><a href="staff-portal.html">Staff Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="registration-container">
+        <nav class="breadcrumb">
+            <a href="event-details.html">&larr; Back to Event Details</a>
+        </nav>
+
+        <div class="registration-grid">
+            <section class="form-section">
+                <header class="section-title">
+                    <h1>Boot-Camp Registration</h1>
+                    <p>Complete the form below to join the Fit Series. <strong>Health clearance required at
+                            gate.</strong></p>
+                </header>
+
+                <form method="post" action="/register" class="styled-form">
+                    <div class="form-group-row">
+                        <div class="form-input">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="e.g. Usain" required>
+                        </div>
+                        <div class="form-input">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="e.g. Bolt" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-input">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="student@uwimona.edu.jm" required>
+                        </div>
+                        <div class="form-input">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (876)" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-input">
+                            <label for="studentId">Student/Staff ID *</label>
+                            <input type="text" id="studentId" name="studentId" placeholder="6200XXXXX" required>
+                        </div>
+                        <div class="form-input">
+                            <label for="tshirt">Complimentary T-Shirt Size *</label>
+                            <select id="tshirt" name="tshirt" required>
+                                <option value="">Select Size</option>
+                                <option value="S">Small</option>
+                                <option value="M">Medium</option>
+                                <option value="L">Large</option>
+                                <option value="XL">X-Large</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <legend>Emergency Contact (Required for Physical Events)</legend>
+                        <div class="form-group-row">
+                            <div class="form-input">
+                                <label for="emergencyName">Contact Name *</label>
+                                <input type="text" id="emergencyName" name="emergencyName" required>
+                            </div>
+                            <div class="form-input">
+                                <label for="emergencyPhone">Contact Phone *</label>
+                                <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <label for="fitnessLevel">Current Fitness Level *</label>
+                    <select id="fitnessLevel" name="fitnessLevel" required>
+                        <option value="">Select Level</option>
+                        <option value="beginner">Beginner (Rarely workout)</option>
+                        <option value="intermediate">Intermediate (1-2 times a week)</option>
+                        <option value="advanced">Advanced (Active Athlete)</option>
+                    </select>
+
+                    <label for="healthNote">Health Conditions / Allergies</label>
+                    <textarea id="healthNote" name="healthNote" placeholder="e.g. Asthma, Knee issues, etc."></textarea>
+
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="waiver" required>
+                            <span>I acknowledge that I am physically fit to participate and agree to the
+                                <strong>Liability Waiver</strong>. *</span>
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="terms" required>
+                                <span>I agree to the Campus Spotlight Terms & Conditions *</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-btn">
+                        <button type="reset" class="btn-reset">Clear All</button>
+                        <button type="submit" class="btn-submit">Submit</button>
+                    </div>
+                </form>
+
+                <article class="summary-card">
+                    <img src="images/bootcamp5.jpeg" alt="Bootcamp" class="summary-img">
+                    <div class="summary-details">
+                        <h2>Fit Series Boot-Camp</h2>
+                        <p class="summary-meta"><strong>Venue:</strong> Hall Courtyard</p>
+                        <p class="summary-meta"><strong>Date:</strong> June 8, 2026</p>
+                    </div>
+                </article>
+                <aside>
+                    <div class="info-card">
+                        <h2>Important Note</h2>
+                        <ul>
+                            <li>Confirmation sent via email instantly.</li>
+                            <li>Please bring your <strong>Student ID</strong> for check-in.</li>
+                            <li>Arrive 15 mins early for gate entry.</li>
+                        </ul>
+                    </div>
+                </aside>
+            </section>
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-content">
+                <!-- Footer logo -->
+                <div class="footer-brand">
+                    <img src="images/logo2.jpg" alt="Campus Spotlight" class="footer-logo">
+                </div>
+
+                <!-- Quick Links Navigation -->
+                <nav class="footer-nav">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="calendar.html">Calendar</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="staff-portal.html">Staff Portal</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-nav">
+                    <h3>Event Categories</h3>
+                    <ul>
+                        <li><a href="#">Academic Events</a></li>
+                        <li><a href="#">Sports & Athletics</a></li>
+                        <li><a href="#">Cultural Events</a></li>
+                        <li><a href="#">Social Events</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact Information -->
+                <nav class="footer-nav">
+                    <h3>Contact Info</h3>
+                    <address class="footer-contact">
+                        <p>Email✉: <a href="mailto:events@campus.edu">events@campus.edu</a></p>
+                        <p>Phone📞: <a href="tel:+18769275563">+1 (876) 927-5563</a></p>
+                        <p>📍</p>
+                    </address>
+                </nav>
+                <!-- Social Media Links -->
+                <!-- <nav class="footer-social">
+                    <h3>Social Media</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </nav> -->
+            </div>
+            <!-- Copyright Notice -->
+            <p class="footer-copyright"><small>&copy; 2026 Campus Spotlight. All rights reserved.</small></p>
+        </div>
+    </footer>
+    <script src="JS/main.js"></script>
+</body>
+
+</html>
