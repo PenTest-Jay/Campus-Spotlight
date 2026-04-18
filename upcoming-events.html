@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <title>Upcoming Events - Campus Spotlight</title>
     <link rel="stylesheet" href="css/upcoming.css">
 </head>
@@ -34,17 +36,22 @@
             </div>
         </section>
         <div>
-            <section class="filter-container">
-                <div class="filter-wrapper">
-                    <form role="search" class="search-box">
-                        <label for="search">Find an Event</label>
-                        <input type="search" id="search" name="search" placeholder="E.g. Reggae Night...">
-                    </form>
+            <section class="filter-container py-4 bg-light">
+                <div class="container">
+                    <div class="row g-3 align-items-end">
 
-                    <form class="filter-selects">
-                        <div class="select-group">
-                            <label for="category">Category</label>
-                            <select id="category" name="category">
+                        <div class="col-md-6">
+                            <label for="search" class="form-label fw-bold">Find an Event</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white"><i class="bi bi-search"></i>🔍</span>
+                                <input type="search" id="search" class="form-control"
+                                    placeholder="E.g. Reggae Night...">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="category" class="form-label fw-bold">Category</label>
+                            <select id="category" class="form-select">
                                 <option value="">All Categories</option>
                                 <option value="academic">Academic</option>
                                 <option value="cultural">Cultural</option>
@@ -53,17 +60,21 @@
                             </select>
                         </div>
 
-                        <div class="select-group">
-                            <label for="sort">Sort By</label>
-                            <select id="sort" name="sort">
+                        <div class="col-md-3">
+                            <label for="sort" class="form-label fw-bold">Sort By</label>
+                            <select id="sort" class="form-select">
                                 <option value="date">Soonest First</option>
                                 <option value="popularity">Popularity</option>
                             </select>
                         </div>
-                    </form>
+
+                    </div>
                 </div>
-                <p class="results-count">Showing <strong id="eventNumber">0</strong> upcoming events</p>
             </section>
+            </form>
+        </div>
+        <p class="results-count">Showing <strong id="eventNumber">0</strong> upcoming events</p>
+        </section>
         </div>
         <!-- Event Grid-->
         <div>
