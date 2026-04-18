@@ -5,19 +5,21 @@
 document.addEventListener("DOMContentLoaded", initApp);
 
 function initApp() {
-    organizeEvents();
-    initReveal();
-    setupNav();
-    initCalendar();
-    initSlideshows();
-    initCounter();
-    setupLogin();
-    initGalleryModal();
+    organizeEvents();   // Sorts events by date
+    initReveal();       // Handles scroll animations
+    setupNav();         // Manages button clicks/links
+    initCalendar();     // Updates the calendar UI
+    initSlideshows();   // Runs image sliders
+    initCounter();      // Updates the "Total Events" count
+    setupLogin();       // Handles the staff login form
+    initGalleryModal(); // Runs the Lightbox gallery
 
-    console.log("System Active: Running");
+    console.log("✅ System Active: Optimized & Running");
 }
 
-/* --- 1. EVENT ORGANIZATION --- */
+/* --- EVENT ORGANIZATION --- 
+Atuo updates the event cards to ensure they are always displayed in chronological order based on their data-date attribute. This allows for dynamic content management without needing to manually reorder HTML.
+*/
 
 function organizeEvents() {
     const container = document.querySelector(".events-grid");
@@ -35,7 +37,9 @@ function organizeEvents() {
     cards.forEach(card => container.appendChild(card));
 }
 
-/* --- 2. REVEAL ANIMATION --- */
+/* --- 2. REVEAL ANIMATION --- 
+Add the "active" class to elements with the "reveal", "nav-card", or "cat-card" classes when they enter the viewport on scroll. This creates a smooth fade-in effect as users navigate the page.
+*/
 
 function initReveal() {
     const elements = document.querySelectorAll(".reveal, .nav-card, .cat-card");
@@ -49,11 +53,13 @@ function initReveal() {
         });
     };
 
-    runReveal(); // 🔥 FIX: run immediately
+    runReveal(); // run immediately
     window.addEventListener("scroll", runReveal, { passive: true });
 }
 
-/* --- 3. NAVIGATION --- */
+/* --- 3. NAVIGATION --- 
+Navigates to different pages based on button clicks. Uses event delegation to handle all relevant clicks in one listener, improving performance and maintainability. Also includes a special case for calendar buttons that show an alert instead of navigating.
+*/
 
 function setupNav() {
     document.addEventListener("click", (e) => {
@@ -74,7 +80,9 @@ function setupNav() {
     });
 }
 
-/* --- 4. CALENDAR --- */
+/* --- 4. CALENDAR 
+calculates the current month and year, updates the calendar header and caption accordingly, and highlights the current date in the calendar table. It uses a simple array of month names for display and checks each calendar cell for a matching date to apply the highlight class.
+--- */
 
 function initCalendar() {
     const header = document.querySelector(".calendar-header h2");
@@ -106,7 +114,9 @@ function initCalendar() {
     });
 }
 
-/* --- 5. SLIDESHOWS --- */
+/* --- 5. SLIDESHOWS ---
+slideshows for both upcoming and past events. It cycles through images every 5 seconds, showing one image at a time by toggling the "active" class. The function is reusable for multiple slideshow containers on the page.
+*/
 
 function initSlideshows() {
     const cycle = (selector) => {
@@ -129,7 +139,9 @@ function initSlideshows() {
     cycle(".past-slideshow");
 }
 
-/* --- 6. COUNTER --- */
+/* --- 6. COUNTER 
+counts the number of event cards on the page and updates the "Total Events" display. It looks for elements with the "event-card" class and updates the text content of the element with id "eventNumber" accordingly.
+--- */
 
 function initCounter() {
     const display = document.getElementById("eventNumber");
@@ -139,7 +151,9 @@ function initCounter() {
     display.textContent = count;
 }
 
-/* --- 7. LOGIN --- */
+/* --- 7. LOGIN 
+login form handling for staff access. It listens for the form submission, prevents the default behavior, and checks if both email and password fields are filled. If they are, it redirects to the staff dashboard; otherwise, it shows an alert prompting for credentials.
+--- */
 
 function setupLogin() {
     const form = document.getElementById("loginForm");
@@ -159,7 +173,9 @@ function setupLogin() {
     });
 }
 
-/* --- 8. GALLERY MODAL --- */
+/* --- 8. GALLERY MODAL
+gallery modal functionality for the gallery page. It opens a modal when an album card is clicked, displaying the first image and allowing users to navigate through the images using next/prev buttons or keyboard arrows. The modal can be closed by clicking outside the image or pressing the Escape key.
+--- */
 
 function initGalleryModal() {
     const modal = document.getElementById("galleryModal");
