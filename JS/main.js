@@ -1,46 +1,45 @@
 /**
- * CAMPUS SPOTLIGHT - MASTER CONTROL SCRIPT
+ * CAMPUS SPOTLIGHT - OPTIMIZED MASTER SCRIPT
  */
 
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. DATA SETUP: Sort events before showing them
-    organizeEvents();
+document.addEventListener("DOMContentLoaded", initApp);
 
-    // 2. UI SYSTEMS: Initialize visual features
+function initApp() {
+    organizeEvents();
     initReveal();
     setupNav();
     initCalendar();
     initSlideshows();
     initCounter();
     setupLogin();
+    initGalleryModal();
 
-    console.log("✅ System Active: Events Sorted and UI Initialized");
-});
+    console.log("System Active: Running");
+}
 
-/* --- 1. EVENT ORGANIZATION (SORTING) --- */
+/* --- 1. EVENT ORGANIZATION --- */
 
 function organizeEvents() {
     const container = document.querySelector(".events-grid");
     if (!container) return;
 
-    // Grab all cards and convert to array for sorting
     const cards = Array.from(container.querySelectorAll(".event-card"));
 
     cards.sort((a, b) => {
-        // Ensure your HTML has data-date="YYYY-MM-DD"
-        const dateA = new Date(a.getAttribute("data-date"));
-        const dateB = new Date(b.getAttribute("data-date"));
-        return dateA - dateB; // Earliest date first
+        const dateA = new Date(a.dataset.date);
+        const dateB = new Date(b.dataset.date);
+        return dateA - dateB;
     });
 
-    // Clear and re-append in the new order
     container.innerHTML = "";
     cards.forEach(card => container.appendChild(card));
 }
 
-/* --- 2. VISUAL EFFECTS --- */
+/* --- 2. REVEAL ANIMATION --- */
+
 function initReveal() {
     const elements = document.querySelectorAll(".reveal, .nav-card, .cat-card");
+    if (!elements.length) return;
 
     const runReveal = () => {
         elements.forEach(el => {
@@ -50,21 +49,8 @@ function initReveal() {
         });
     };
 
-    // RUN IMMEDIATELY on page load
-    runReveal();
-
-    // THEN run on scroll
+    runReveal(); // 🔥 FIX: run immediately
     window.addEventListener("scroll", runReveal, { passive: true });
-}
-        });
-    };
-    window.addEventListener("scroll", runReveal, { passive: true });
-    setTimeout(runReveal, 100);
-}
-        });
-    };
-    window.addEventListener("scroll", runReveal, { passive: true });
-    setTimeout(runReveal, 100);
 }
 
 /* --- 3. NAVIGATION --- */
@@ -79,72 +65,81 @@ function setupNav() {
             return;
         }
 
-        let path = "";
-        if (target.hasAttribute("data-link")) {
-            path = target.getAttribute("data-link").trim();
-        } else if (target.classList.contains("btn-details")) {
-            path = "event-details.html";
-        } else if (target.hasAttribute("data-register")) {
-            path = "registration.html";
-        }
+        const path =
+            target.dataset.link?.trim() ||
+            (target.classList.contains("btn-details") && "event-details.html") ||
+            (target.hasAttribute("data-register") && "registration.html");
 
         if (path) window.location.href = path;
     });
 }
 
-/* --- 4. CALENDAR MODULE --- */
+/* --- 4. CALENDAR --- */
 
 function initCalendar() {
+    const header = document.querySelector(".calendar-header h2");
+    const caption = document.querySelector(".event-table caption");
+
+    if (!header && !caption) return;
+
     const today = new Date();
     const day = today.getDate();
     const month = today.getMonth();
     const year = today.getFullYear();
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    const header = document.querySelector(".calendar-header h2");
-    if (header) header.textContent = `${monthNames[month]} ${year}`;
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
 
-    const caption = document.querySelector(".event-table caption");
-    if (caption) caption.textContent = `${monthNames[month]} ${year} Events Calendar`;
+    const label = `${monthNames[month]} ${year}`;
+
+    if (header) header.textContent = label;
+    if (caption) caption.textContent = `${label} Events Calendar`;
 
     document.querySelectorAll(".event-table td").forEach(cell => {
         const match = cell.innerText.trim().match(/^\d+/);
-        if (match && parseInt(match[0], 10) === day) {
-            cell.setAttribute("aria-current", "date");
+        if (match && parseInt(match[0]) === day) {
             cell.classList.add("today-highlight");
-            cell.style.backgroundColor = "rgba(255, 215, 0, 0.2)";
-            cell.scrollIntoView({ behavior: "smooth", block: "center" });
+            cell.setAttribute("aria-current", "date");
         }
     });
 }
 
-/* --- 5. MEDIA & UI --- */
+/* --- 5. SLIDESHOWS --- */
 
 function initSlideshows() {
     const cycle = (selector) => {
         const container = document.querySelector(selector);
         if (!container) return;
+
         const slides = container.querySelectorAll("img");
         if (slides.length <= 1) return;
 
         let i = 0;
+
         setInterval(() => {
             slides[i].classList.remove("active");
             i = (i + 1) % slides.length;
             slides[i].classList.add("active");
         }, 5000);
     };
+
     cycle(".upcoming-slideshow");
     cycle(".past-slideshow");
 }
 
+/* --- 6. COUNTER --- */
+
 function initCounter() {
-    const count = document.querySelectorAll(".event-card").length;
     const display = document.getElementById("eventNumber");
-    if (display) display.textContent = count;
+    if (!display) return;
+
+    const count = document.querySelectorAll(".event-card").length;
+    display.textContent = count;
 }
 
-/* --- 6. FORMS --- */
+/* --- 7. LOGIN --- */
 
 function setupLogin() {
     const form = document.getElementById("loginForm");
@@ -152,6 +147,7 @@ function setupLogin() {
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+
         const user = document.getElementById("email")?.value;
         const pass = document.getElementById("password")?.value;
 
@@ -163,77 +159,72 @@ function setupLogin() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Select all the elements we need
+/* --- 8. GALLERY MODAL --- */
+
+function initGalleryModal() {
     const modal = document.getElementById("galleryModal");
+    if (!modal) return; // only run on gallery page
+
     const modalImg = document.getElementById("modalImage");
     const captionText = document.getElementById("caption");
     const closeBtn = document.querySelector(".close-modal");
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
 
-    let currentAlbumImages = [];
-    let currentIndex = 0;
+    let images = [];
+    let index = 0;
 
-    // 2. Open Album Logic
-    const albumCards = document.querySelectorAll('.album-card');
+    const albumCards = document.querySelectorAll(".album-card");
 
     albumCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // Get all images from the 'hidden-images' div inside the clicked card
-            const hiddenImgs = card.querySelectorAll('.hidden-images img');
-            const summary = card.getAttribute('data-summary');
-            const albumTitle = card.querySelector('h2').innerText;
+        card.addEventListener("click", () => {
+            const hiddenImgs = card.querySelectorAll(".hidden-images img");
+            const title = card.querySelector("h2").innerText;
+            const summary = card.dataset.summary || "";
 
-            // Map the image sources into an array
-            currentAlbumImages = Array.from(hiddenImgs).map(img => img.src);
-            currentIndex = 0;
+            images = Array.from(hiddenImgs).map(img => img.src);
+            index = 0;
 
-            if (currentAlbumImages.length > 0) {
+            if (images.length) {
                 modal.style.display = "block";
-                updateModal(albumTitle, summary);
+                updateModal(title, summary);
             }
         });
     });
 
-    // 3. Update Modal Content
-    function updateModal(title, summary) {
-        modalImg.src = currentAlbumImages[currentIndex];
-        captionText.innerHTML = `<strong>${title}</strong><br>${summary}<br>
-                                 <small>Photo ${currentIndex + 1} of ${currentAlbumImages.length}</small>`;
+    function updateModal(title = "", summary = "") {
+        modalImg.src = images[index];
+        captionText.innerHTML = `
+            <strong>${title}</strong><br>${summary}<br>
+            <small>Photo ${index + 1} of ${images.length}</small>
+        `;
     }
 
-    // 4. Navigation Logic
-    nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevents clicking the arrow from closing the modal
-        currentIndex = (currentIndex + 1) % currentAlbumImages.length;
-        updateModal("", ""); // Keep existing text or pass empty
-    });
-
-    prevBtn.addEventListener('click', (e) => {
+    nextBtn?.addEventListener("click", (e) => {
         e.stopPropagation();
-        currentIndex = (currentIndex - 1 + currentAlbumImages.length) % currentAlbumImages.length;
-        updateModal("", "");
+        index = (index + 1) % images.length;
+        updateModal();
     });
 
-    // 5. Close Modal Logic
-    closeBtn.onclick = () => {
+    prevBtn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        index = (index - 1 + images.length) % images.length;
+        updateModal();
+    });
+
+    closeBtn?.addEventListener("click", () => {
         modal.style.display = "none";
-    };
-
-    // Close when clicking outside the image
-    window.onclick = (event) => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    };
-
-    // Keyboard support (Escape to close, Arrows to navigate)
-    document.addEventListener('keydown', (e) => {
-        if (modal.style.display === "block") {
-            if (e.key === "Escape") modal.style.display = "none";
-            if (e.key === "ArrowRight") nextBtn.click();
-            if (e.key === "ArrowLeft") prevBtn.click();
-        }
     });
-});
+
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) modal.style.display = "none";
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (modal.style.display !== "block") return;
+
+        if (e.key === "Escape") modal.style.display = "none";
+        if (e.key === "ArrowRight") nextBtn?.click();
+        if (e.key === "ArrowLeft") prevBtn?.click();
+    });
+}
