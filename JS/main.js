@@ -39,7 +39,6 @@ function organizeEvents() {
 }
 
 /* --- 2. VISUAL EFFECTS --- */
-
 function initReveal() {
     const runReveal = () => {
         const elements = document.querySelectorAll(".reveal, .nav-card, .cat-card");
@@ -47,6 +46,11 @@ function initReveal() {
             if (el.getBoundingClientRect().top < window.innerHeight - 100) {
                 el.classList.add("active");
             }
+        });
+    };
+    window.addEventListener("scroll", runReveal, { passive: true });
+    setTimeout(runReveal, 100);
+}
         });
     };
     window.addEventListener("scroll", runReveal, { passive: true });
