@@ -249,35 +249,37 @@ function initGalleryModal() {
 }
 
 
-/* --- 9. MASTER SEARCH, FILTER & SORT --- */
+/* --- 9. MASTER SEARCH, FILTER, SORT & COUNT --- */
 
 function initMasterFilter() {
+    // 1. Grab all the UI elements
     const searchInput = document.getElementById("search");
     const categorySelect = document.getElementById("category");
     const sortSelect = document.getElementById("sort");
     const container = document.querySelector(".events-grid");
+    const countDisplay = document.getElementById("eventNumber");
 
+    // Safety Check: If the container doesn't exist on this page, stop the script
     if (!container) return;
 
     const runAllFilters = () => {
-        // Grab current values (or defaults if empty)
+        // 2. Get current values from the inputs
         const query = searchInput ? searchInput.value.toLowerCase() : "";
         const selectedCat = categorySelect ? categorySelect.value : "";
         const selectedSort = sortSelect ? sortSelect.value : "date";
-
+        
+        // 3. Convert cards to an Array so we can sort them
         let cards = Array.from(container.querySelectorAll(".event-card"));
 
+        // 4. FILTERING LOGIC
         cards.forEach(card => {
             const content = card.innerText.toLowerCase();
             const cardCat = card.dataset.category || "";
 
-            // Check Search (If query is empty, this is always true)
             const matchesSearch = content.includes(query);
-
-            // Check Category (If "All" is selected, this is always true)
             const matchesCat = selectedCat === "" || cardCat === selectedCat;
 
-            // Apply visibility: Card must pass BOTH checks
+            // Apply visibility
             if (matchesSearch && matchesCat) {
                 card.style.display = "block";
             } else {
@@ -285,25 +287,40 @@ function initMasterFilter() {
             }
         });
 
-        // SORTING: This runs independently of visibility
+        // 5. UPDATE COUNTER (Recount visible cards)
+        if (countDisplay) {
+            const visibleCount = cards.filter(card => card.style.display !== "none").length;
+            countDisplay.textContent = visibleCount;
+        }
+
+        // 6. SORTING LOGIC
         cards.sort((a, b) => {
             if (selectedSort === "date") {
+                // Sorting by date (Newest first)
                 return new Date(a.dataset.date) - new Date(b.dataset.date);
             } else if (selectedSort === "popularity") {
-                return parseInt(b.dataset.popularity || 0) - parseInt(a.dataset.popularity || 0);
+                // Sorting by popularity (Highest first)
+                const popA = parseInt(a.dataset.popularity || 0);
+                const popB = parseInt(b.dataset.popularity || 0);
+                return popB - popA;
             }
         });
 
-        // Move the cards in the DOM to reflect the new sort order
+        // 7. RE-RENDER: Update the order in the HTML
         cards.forEach(card => container.appendChild(card));
     };
 
-    // Add listeners to all three tabs
+    // 8. LISTENERS: Trigger the filter whenever a user changes a tab
     searchInput?.addEventListener("input", runAllFilters);
     categorySelect?.addEventListener("change", runAllFilters);
     sortSelect?.addEventListener("change", runAllFilters);
+
+    // 9. INITIAL RUN: Run once on page load to set initial count/sort
+    runAllFilters();
 }
 
+// CRITICAL: Call the function when the document is ready
+document.addEventListener("DOMContentLoaded", initMasterFilter);
 
 /* --- CONTACT FORM VALIDATION --- */
 
