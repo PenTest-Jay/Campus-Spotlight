@@ -40,12 +40,22 @@ function organizeEvents() {
 
 /* --- 2. VISUAL EFFECTS --- */
 function initReveal() {
+    const elements = document.querySelectorAll(".reveal, .nav-card, .cat-card");
+
     const runReveal = () => {
-        const elements = document.querySelectorAll(".reveal, .nav-card, .cat-card");
         elements.forEach(el => {
             if (el.getBoundingClientRect().top < window.innerHeight - 100) {
                 el.classList.add("active");
             }
+        });
+    };
+
+    // RUN IMMEDIATELY on page load
+    runReveal();
+
+    // THEN run on scroll
+    window.addEventListener("scroll", runReveal, { passive: true });
+}
         });
     };
     window.addEventListener("scroll", runReveal, { passive: true });
