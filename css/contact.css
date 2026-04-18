@@ -323,7 +323,7 @@ details p {
    ======================================== */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(o);
     transition: all 0.8s ease-out;
 }
 
